@@ -28,7 +28,21 @@ public class Main {
                     String[] newString = new String[5];
                     ordenaNombres(vectorS, indiceSiguiente, newString);
                     for(String name : newString) {
-                        System.out.println(name);
+                        if(name != null) {
+                            System.out.println(name);
+                        }
+                    }
+                    break;
+                case 4:
+                    String[] newStringQ = new String[5];
+                    ordenaNombres(vectorS, indiceSiguiente, newStringQ);
+                    System.out.print("Introduzca término a buscar\n> ");
+                    String respuesta = sc.nextLine();
+                    int pos = dicotomico(vectorS, respuesta, indiceSiguiente-1);
+                    if(pos == -1) {
+                        System.out.println("No se ha encontrado " + respuesta + " en el vector");
+                    } else {
+                        System.out.println("La posición de " + respuesta + " en el vector ordenado es " + (1+pos));
                     }
                     break;
             }
@@ -89,6 +103,30 @@ public class Main {
             }
             i++;
         }
+    }
+    public static int dicotomico(String[] a, String s, int f) {
+        int start = 0;
+        int end = f;
+        int middle = (end+start)/2;
+
+        while(start < end){
+            if(a[middle].equals(s)) {
+                return middle;
+            }
+            if(a[end].equals(s)) {
+                return end;
+            }
+
+            if(a[middle].compareToIgnoreCase(s) > 0) {
+                end = middle - 1;
+            } else {
+                start = middle + 1;
+            }
+            middle = (end+start)/2;
+
+        }
+
+        return -1;
     }
 
 }
