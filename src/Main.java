@@ -20,6 +20,10 @@ public class Main {
                     System.out.println(indiceSiguiente);
                     indiceSiguiente++;
                     break;
+                case 2:
+                    ordenaNombres(vectorS, indiceSiguiente);
+                    System.out.println(Arrays.toString(vectorS));
+                    break;
             }
 
         } while(continuar);
@@ -47,4 +51,20 @@ public class Main {
                 System.out.println("forbidden");
             }
         } while (true);
-    }}
+    }
+
+    public static void ordenaNombres(String[] a, int ind) {
+        String temp = "";
+        int i = 0;
+        while(i < ind-1) {
+            if(a[i].compareToIgnoreCase(a[i+1]) > 0) {
+                temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+                i = -1;
+            }
+            i++;
+        }
+    }
+
+}
