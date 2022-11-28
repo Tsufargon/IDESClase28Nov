@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -7,6 +8,21 @@ public class Main {
 
         boolean continuar = true;
         Scanner sc;
+
+        do {
+            sc = new Scanner(System.in);
+            int opt = getOption();
+            switch(opt) {
+                case 1:
+                    System.out.print("Introduzca frase a introducir:\n> ");
+                    vectorS[indiceSiguiente] = sc.nextLine();
+                    System.out.println(Arrays.toString(vectorS));
+                    System.out.println(indiceSiguiente);
+                    indiceSiguiente++;
+                    break;
+            }
+
+        } while(continuar);
     }
 
     public static int getOption() {
