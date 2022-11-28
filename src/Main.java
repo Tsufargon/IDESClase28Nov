@@ -24,6 +24,13 @@ public class Main {
                     ordenaNombres(vectorS, indiceSiguiente);
                     System.out.println(Arrays.toString(vectorS));
                     break;
+                case 3:
+                    String[] newString = new String[5];
+                    ordenaNombres(vectorS, indiceSiguiente, newString);
+                    for(String name : newString) {
+                        System.out.println(name);
+                    }
+                    break;
             }
 
         } while(continuar);
@@ -36,7 +43,7 @@ public class Main {
             sc = new Scanner(System.in);
             System.out.print("[1] Inserta nombres de productos\n" +
                     "[2] Ordena nombres de productos\n" +
-                    "[3] Visualiza todos los nombres de productos\n" +
+                    "[3] Visualiza ordenados todos los nombres de productos\n" +
                     "[4] Búsqueda de un nombre de producto\n" +
                     "[5] Salir\n" +
                     "> ");
@@ -61,6 +68,23 @@ public class Main {
                 temp = a[i];
                 a[i] = a[i+1];
                 a[i+1] = temp;
+                i = -1;
+            }
+            i++;
+        }
+    }
+
+    public static void ordenaNombres(String[] a, int ind, String[] newOne) {
+        String temp = "";
+        for(int i = 0; i < ind; i++) {
+            newOne[i] = a[i];
+        }
+        int i = 0;
+        while(i < ind-1) {
+            if(newOne[i].compareToIgnoreCase(newOne[i+1]) > 0) {
+                temp = newOne[i];
+                newOne[i] = newOne[i+1];
+                newOne[i+1] = temp;
                 i = -1;
             }
             i++;
